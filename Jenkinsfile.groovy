@@ -16,10 +16,10 @@ pipeline {
 			script {
 				tool name: 'docker', type: 'dockerTool'
 				def dockerImage = docker.build("gedgrus/java-app", "-f ${WORKSPACE}/docker/Dockerfile .")
-				docker.withRegistry('', 'dockerhub-cred') {
-				dockerImage.push()
-				dockerImage.push("latest")
-				}
+				// docker.withRegistry('', 'dockerhub-cred') {
+				// dockerImage.push()
+				// dockerImage.push("latest")
+				// }
 			}
 			}
 		} //Stage Build Image
@@ -27,11 +27,13 @@ pipeline {
 		stage("Push Image") {
 			steps {
 			script {
-				echo "df"
-				// 	docker.withRegistry('', 'dockerhub-cred') {
-				// 	dockerImage.push()
-				// 	dockerImage.push("latest")
-				// }
+				withCredentials([usernamePassword(credentialsId: 'dockerhub-cred', passwordVariable: 'password', usernameVariable: 'username')]) {
+					sh '''
+						docker login --username ${username} --password ${password}
+						docker push gedgrus/java-app:latest
+					'''
+
+				}
 			}
 			}
 		} //Stage3
