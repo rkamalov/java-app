@@ -45,7 +45,7 @@ pipeline {
 		}
 
 		failure {
-		"failure"
+		echo "failure"
 		}
 	} //post
 } //pipeline
