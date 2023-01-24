@@ -3,19 +3,16 @@ pipeline {
 	agent any
 
 	stages {
-		stage("Stage1") {
+		stage("Prepare") {
 			steps {
-			echo "Stage 1"
-				cleanWs()
 
 				// // This step should not normally be used in your script. Consult the inline help for details.
 				// withDockerRegistry(credentialsId: 'dockerhub-cred', url: 'https://hub.docker.com/') {
     			// 	// some block
 				// 	sh 'docker images'
 				// }
-				sh "ls -la ${WORKSPACE}"
-				sh "ls -la ${WORKSPACE}/docker"
-				// sh 'docker build --file ./docker/Dockerfile --tag gedgrus/java-app:latest .'
+				git branch: 'main', credentialsId: 'git-cred', url: 'git@github.com:rkamalov/java-app.git'
+				sh 'docker build --file ${WORKSPACE}/java-app/docker/Dockerfile --tag gedgrus/java-app:latest .'
 				
 				
 			}
