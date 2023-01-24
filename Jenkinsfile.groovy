@@ -12,9 +12,9 @@ pipeline {
     			// 	// some block
 				// 	sh 'docker images'
 				// }
-				dir("docker") {
-					sh 'docker build -t gedgrus/java-app:latest .'
-				}
+				
+				sh 'docker build --file ./docker/Dockerfile --tag gedgrus/java-app:latest .'
+				
 				
 			}
 		} //Stage1
