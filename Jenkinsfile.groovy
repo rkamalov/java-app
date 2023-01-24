@@ -11,7 +11,13 @@ pipeline {
 	
 		stage("Build Image") {
 			steps {
-				sh 'docker build --file ${WORKSPACE}/docker/Dockerfile --tag gedgrus/java-app:latest .'
+				// sh 'docker build --file ${WORKSPACE}/docker/Dockerfile --tag gedgrus/java-app:latest .'
+
+				def dockerImage = docker.build("gedgrus/java-app", "-f ${WORKSPACE}/docker/Dockerfile .")
+				docker.withRegistry('', 'dockerhub-cred') {
+					dockerImage.push()
+					dockerImage.push("latest")
+				}
 			}
 		} //Stage Build Image
 
