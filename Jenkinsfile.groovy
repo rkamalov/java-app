@@ -14,6 +14,7 @@ pipeline {
 				// 	sh 'docker images'
 				// }
 				sh "ls -la ${WORKSPACE}"
+				sh "ls -la ${WORKSPACE}/docker"
 				// sh 'docker build --file ./docker/Dockerfile --tag gedgrus/java-app:latest .'
 				
 				
