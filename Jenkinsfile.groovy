@@ -6,6 +6,7 @@ pipeline {
 		stage("Stage1") {
 			steps {
 			echo "Stage 1"
+				cleanWs()
 
 				// // This step should not normally be used in your script. Consult the inline help for details.
 				// withDockerRegistry(credentialsId: 'dockerhub-cred', url: 'https://hub.docker.com/') {
@@ -48,6 +49,7 @@ pipeline {
 	post {
 		always {
 		echo "always"
+		cleanWs()
 		}
 
 		success {
