@@ -6,6 +6,12 @@ pipeline {
 		stage("Stage1") {
 			steps {
 			echo "Stage 1"
+
+				// This step should not normally be used in your script. Consult the inline help for details.
+				withDockerRegistry(credentialsId: 'dockerhub-cred', url: 'https://hub.docker.com/') {
+    				// some block
+					docker images
+				}
 			}
 		} //Stage1
 	
