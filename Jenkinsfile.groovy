@@ -13,7 +13,7 @@ pipeline {
 				// }
 				git branch: 'main', credentialsId: 'git-cred', url: 'git@github.com:rkamalov/java-app.git'
 				sh 'ls -la'
-				// sh 'docker build --file ${WORKSPACE}/java-app/docker/Dockerfile --tag gedgrus/java-app:latest .'
+				sh 'docker build --file ${WORKSPACE}/docker/Dockerfile --tag gedgrus/java-app:latest .'
 				
 				
 			}
