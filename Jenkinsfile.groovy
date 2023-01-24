@@ -5,25 +5,15 @@ pipeline {
 	stages {
 		stage("Prepare") {
 			steps {
-
-				// // This step should not normally be used in your script. Consult the inline help for details.
-				// withDockerRegistry(credentialsId: 'dockerhub-cred', url: 'https://hub.docker.com/') {
-    			// 	// some block
-				// 	sh 'docker images'
-				// }
 				git branch: 'main', credentialsId: 'git-cred', url: 'git@github.com:rkamalov/java-app.git'
-				sh 'ls -la'
-				sh 'docker build --file ${WORKSPACE}/docker/Dockerfile --tag gedgrus/java-app:latest .'
-				
-				
 			}
-		} //Stage1
+		} //Stage Prepare
 	
-		stage("Stage2") {
+		stage("Build Image") {
 			steps {
-			echo "Stage 2"
+				sh 'docker build --file ${WORKSPACE}/docker/Dockerfile --tag gedgrus/java-app:latest .'
 			}
-		} //Stage2
+		} //Stage Build Image
 
 		stage("Stage3") {
 			steps {
