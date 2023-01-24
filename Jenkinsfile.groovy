@@ -12,7 +12,8 @@ pipeline {
 				// 	sh 'docker images'
 				// }
 				git branch: 'main', credentialsId: 'git-cred', url: 'git@github.com:rkamalov/java-app.git'
-				sh 'docker build --file ${WORKSPACE}/java-app/docker/Dockerfile --tag gedgrus/java-app:latest .'
+				sh 'ls -la'
+				// sh 'docker build --file ${WORKSPACE}/java-app/docker/Dockerfile --tag gedgrus/java-app:latest .'
 				
 				
 			}
