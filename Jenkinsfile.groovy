@@ -7,11 +7,12 @@ pipeline {
 			steps {
 			echo "Stage 1"
 
-				// This step should not normally be used in your script. Consult the inline help for details.
-				withDockerRegistry(credentialsId: 'dockerhub-cred', url: 'https://hub.docker.com/') {
-    				// some block
-					sh 'docker images'
-				}
+				// // This step should not normally be used in your script. Consult the inline help for details.
+				// withDockerRegistry(credentialsId: 'dockerhub-cred', url: 'https://hub.docker.com/') {
+    			// 	// some block
+				// 	sh 'docker images'
+				// }
+				sh 'docker images'
 			}
 		} //Stage1
 	
