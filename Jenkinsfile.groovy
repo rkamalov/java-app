@@ -2,9 +2,7 @@
 
 pipeline {
 	agent any
-	tools {
-    	'org.jenkinsci.plugins.docker.commons.tools.DockerTool' 'docker'
-	}
+
 	stages {
 		stage("Prepare") {
 			steps {
@@ -18,10 +16,10 @@ pipeline {
 				// sh 'docker build --file ${WORKSPACE}/docker/Dockerfile --tag gedgrus/java-app:latest .'
 			script {
 				def dockerImage = docker.build("gedgrus/java-app", "-f ${WORKSPACE}/docker/Dockerfile .")
-			// 	docker.withRegistry('', 'dockerhub-cred') {
-			// 		dockerImage.push()
-			// 		dockerImage.push("latest")
-			// 	}
+				docker.withRegistry('', 'dockerhub-cred') {
+					dockerImage.push()
+					dockerImage.push("latest")
+				}
 			}
 			}
 		} //Stage Build Image
