@@ -5,6 +5,7 @@ pipeline {
 	stages {
 		stage("Prepare") {
 			steps {
+				sh "export PATH=/Users/rrkamalov/opt/anaconda3/bin:/Users/rrkamalov/opt/anaconda3/condabin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/rrkamalov/bin:/opt/X11/bin:/Library/Apple/usr/bin"
 				git branch: 'main', credentialsId: 'git-cred', url: 'git@github.com:rkamalov/java-app.git'
 			}
 		} //Stage Prepare
