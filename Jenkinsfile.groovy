@@ -13,7 +13,7 @@ pipeline {
 				// 	sh 'docker images'
 				// }
 				dir(docker) {
-					docker build -t gedgrus/java-app:latest
+					sh 'docker build -t gedgrus/java-app:latest'
 				}
 				
 			}
