@@ -16,11 +16,10 @@ pipeline {
 		} //Stage2
 
 		stage("Stage3") {
-
-		} //Stage3
 			steps {
 
 			}
+		} //Stage3
 		stage("Stage4") {
 			steps {
 
