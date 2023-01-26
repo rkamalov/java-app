@@ -4,8 +4,8 @@ metadata:
   name : java-app
   labels:
     app: java-app
-#  annotations:
-#    metallb.universe.tf/allow-shared-ip: "shareip"
+  # annotations:
+  #   metallb.universe.tf/allow-shared-ip: "shareip"
 spec:
   selector:
     app : java-app
@@ -14,7 +14,7 @@ spec:
     - name       : app-listener
       protocol   : TCP
       port       : 9092
-      targetPort : 9092
+#      targetPort : 9092
 ---
 apiVersion : apps/v1
 kind : Deployment

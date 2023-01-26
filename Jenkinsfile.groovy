@@ -32,17 +32,12 @@ pipeline {
 			}
 			}
 		} //Stage3
-		stage("Stage4") {
+		stage("Run app") {
 			steps {
-			echo "Stage 4"
+				sh "sh ./setup.sh"
 			}
 		} //Stage4
 
-		stage("Stage5") {
-			steps {
-			echo "Stage 5"
-			}
-		} //Stage5
 
 	} //stages
 
