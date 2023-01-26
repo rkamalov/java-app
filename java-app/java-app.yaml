@@ -10,9 +10,11 @@ spec:
   selector:
     app : java-app
   type : LoadBalancer
+  # type  : NodePort
   ports:
     - name       : app-listener
       protocol   : TCP
+      targetPort : 9092
       port       : 9092
 #      targetPort : 9092
 ---
