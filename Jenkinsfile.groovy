@@ -34,7 +34,10 @@ pipeline {
 		} //Stage3
 		stage("Run app") {
 			steps {
-				sh "sh ./setup.sh"
+				withCredentials([file(credentialsId: 'kubecfg', variable: 'FILE')]) {
+					sh "cat $FILE > kubernetes-cluster-5554_kubeconfig.yaml" 
+					sh "sh ./setup2.sh"
+				}
 			}
 		} //Stage4
 
